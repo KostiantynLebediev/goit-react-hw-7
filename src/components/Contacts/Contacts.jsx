@@ -1,31 +1,31 @@
-import css from "./Contacts.module.css";
-import { AiOutlineUser } from "react-icons/ai";
-import { AiOutlinePhone } from "react-icons/ai";
+import styles from "./Contacts.module.css";
+import { FaPhoneAlt } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
+
 import { useDispatch } from "react-redux";
 import { deleteContact } from "../../redux/contactsOps";
 
-export default function Contact({ contact }) {
+const Contact = ({ contact }) => {
   const dispatch = useDispatch();
-
-  const handleDelete = () => {
-    dispatch(deleteContact(contact.id));
-  };
-
   return (
-    <div className={css.contactCard}>
-      <div className={css.contactInfo}>
-        <p className={css.text}>
-          <AiOutlineUser />
-          {contact.name}
-        </p>
-        <p className={css.text}>
-          <AiOutlinePhone />
-          {contact.number}
-        </p>
-      </div>
-      <button className={css.btn} onClick={handleDelete}>
+    <div className={styles.container}>
+      <p className={styles.text}>
+        <FaUser className={styles.icon} />
+        {contact.name}
+      </p>
+      <p className={styles.text}>
+        <FaPhoneAlt className={styles.icon} />
+        {contact.number}
+      </p>
+      <button
+        className={styles.btn}
+        type="button"
+        onClick={() => dispatch(deleteContact(contact.id))}
+      >
         Delete
       </button>
     </div>
   );
-}
+};
+
+export default Contact;

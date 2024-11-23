@@ -1,25 +1,28 @@
-import css from "./SarchBox.module.css";
-import { useSelector, useDispatch } from "react-redux";
-import { changeFilter } from "../../redux/filtersSlice";
-import { selectNameFilter } from "../../redux/filtersSlice";
+import { useDispatch, useSelector } from "react-redux";
 
-export default function SearchBox() {
+import { changeFilter, selectNameFilter } from "../../redux/filtersSlice";
+
+import styles from "./SarchBox.module.css";
+
+const SearchBox = () => {
   const dispatch = useDispatch();
-
   const filter = useSelector(selectNameFilter);
-
-  const handleFilterChange = (event) =>
+  const handleChange = (event) => {
     dispatch(changeFilter(event.target.value));
-
+  };
   return (
-    <div className={css.searchContainer}>
-      <p className={css.label}>Find contacts by name</p>
-      <input
-        className={css.input}
-        type="text"
-        value={filter}
-        onChange={handleFilterChange}
-      />
+    <div className={styles.container}>
+      <div className={styles.box}>
+        <p className={styles.label}>Find contacts by name</p>
+        <input
+          className={styles.input}
+          type="text"
+          value={filter}
+          onChange={handleChange}
+        />
+      </div>
     </div>
   );
-}
+};
+
+export default SearchBox;
