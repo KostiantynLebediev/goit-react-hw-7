@@ -1,14 +1,14 @@
 import ContactForm from "../ContactsForm/ContactsForm";
 import SearchBox from "../SearchBox/SearchBox";
 import ContactList from "../ContactsList/ContactsList";
-
+import css from "./App.module.css"
 import { useDispatch, useSelector } from "react-redux";
 import { fetchContacts } from "../../redux/contactsOps";
-import { selectLoading, selectError } from "../../redux/filtersSlice";
+import { selectLoading, selectError } from "../../redux/contactSlice";
 
 import { useEffect } from "react";
 
-const App = () => {
+function App ()  {
   const dispatch = useDispatch();
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
@@ -17,8 +17,8 @@ const App = () => {
     dispatch(fetchContacts());
   }, [dispatch]);
   return (
-    <div>
-      <h1>Phonebook (by Redux Toolkit)</h1>
+    <div className={css.container}>
+      <h1>Phonebook</h1>
       <ContactForm />
       <SearchBox />
       {loading && !error && <b>Request in progress...</b>}
