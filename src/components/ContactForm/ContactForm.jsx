@@ -4,7 +4,7 @@ import { nanoid } from "nanoid";
 import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contactsOps";
 
-import styles from "./ContactsForm.module.css";
+import styles from "./ContactForm.module.css";
 
 const INITIAL_VALUES = {
   name: "",
